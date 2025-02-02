@@ -30,6 +30,9 @@ install_subnet49() {
     # Install git-lfs dan dependencies Python
     sudo apt install git-lfs -y
     git lfs install
+    sudo apt install python3-venv
+    python3 -m venv myenv
+    source myenv/bin/activate
     pip install -r requirements.txt
     pip install -e .
 
