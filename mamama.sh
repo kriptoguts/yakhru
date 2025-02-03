@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fungsi untuk mengganti <ip> dengan IPv4 server
+# Fungsi untuk mendapatkan IPv4 server
 get_ip() {
     curl -s http://checkip.amazonaws.com
 }
@@ -12,8 +12,9 @@ echo "Pilih opsi yang ingin dijalankan:"
 echo "1) Instalasi Bittensor CLI"
 echo "2) Instalasi Gaia"
 echo "3) Menjalankan script"
+echo "4) Cek IP server"
 
-read -p "Masukkan pilihan (1/2/3): " pilihan
+read -p "Masukkan pilihan (1/2/3/4): " pilihan
 
 case $pilihan in
     1)
@@ -65,7 +66,9 @@ EOL
         ./setup_proxy_server.sh --ip "$IP" --port 8089 --forwarding_port 9032 --server_name ProxyServer1
         fiber-post-ip --netuid 57 --external_ip "$IP" --external_port 8089 --subtensor.network finney --wallet.name default --wallet.hotkey default
         pm2 start --name subnet57 --instances 1 python -- gaia/miner/miner.py --port 9032
-        btcli subnet register --netuid 57 --wallet.name default --wallet.hotkey default
+        ;;
+    4)
+        echo "IP server Anda adalah: $IP"
         ;;
     *)
         echo "Pilihan tidak valid, keluar..."
