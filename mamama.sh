@@ -63,6 +63,17 @@ EOL
         ;;
     3)
         echo "Menjalankan script dengan IP: $IP..."
+        
+        # Mengecek apakah sedang berada di dalam direktori Gaia
+        if [[ $(basename "$PWD") != "Gaia" ]]; then
+            echo "Berpindah ke direktori Gaia..."
+            cd Gaia || { echo "Direktori Gaia tidak ditemukan!"; exit 1; }
+        fi
+
+        # Mengaktifkan environment Gaia
+        source ../.gaia/bin/activate
+
+        # Menjalankan perintah
         ./setup_proxy_server.sh --ip "$IP" --port 8089 --forwarding_port 9032 --server_name ProxyServer1
         fiber-post-ip --netuid 57 --external_ip "$IP" --external_port 8089 --subtensor.network finney --wallet.name default --wallet.hotkey default
         pm2 start --name subnet57 --instances 1 python -- gaia/miner/miner.py --port 9032
