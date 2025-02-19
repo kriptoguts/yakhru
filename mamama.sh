@@ -56,7 +56,6 @@ WALLET_NAME=default
 HOTKEY_NAME=default
 NETUID=57
 SUBTENSOR_NETWORK=finney
-MIN_STAKE_THRESHOLD=10000
 EOL
 
         echo "Instalasi Gaia selesai. Silakan cek dan edit file .env jika diperlukan."
