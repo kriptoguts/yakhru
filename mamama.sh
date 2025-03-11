@@ -21,7 +21,7 @@ case $pilihan in
         echo "Mengunduh dan menjalankan Bittensor CLI..."
         wget https://raw.githubusercontent.com/rennzone/Auto-Install-Bittensor-Script/refs/heads/main/bittensor-cli.sh && bash bittensor-cli.sh
         ;;
-    23)
+    2)
         echo "Mengkloning dan menginstal Gaia..."
         git clone https://github.com/Nickel5-Inc/Gaia.git
         cd Gaia || exit
@@ -60,7 +60,7 @@ EOL
 
         echo "Instalasi Gaia selesai. Silakan cek dan edit file .env jika diperlukan."
         ;;
-    34)
+    3)
         echo "Menjalankan script dengan IP: $IP..."
         
         # Mengecek apakah sedang berada di dalam direktori Gaia
