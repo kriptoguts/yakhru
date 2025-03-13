@@ -21,7 +21,7 @@ case $pilihan in
         echo "Mengunduh dan menjalankan Bittensor CLI..."
         wget https://raw.githubusercontent.com/rennzone/Auto-Install-Bittensor-Script/refs/heads/main/bittensor-cli.sh && bash bittensor-cli.sh
         ;;
-    2)
+    23)
         echo "Mengkloning dan menginstal Gaia..."
         git clone https://github.com/Nickel5-Inc/Gaia.git
         cd Gaia || exit
@@ -60,7 +60,7 @@ EOL
 
         echo "Instalasi Gaia selesai. Silakan cek dan edit file .env jika diperlukan."
         ;;
-    3)
+    332)
         echo "Menjalankan script dengan IP: $IP..."
         
         # Mengecek apakah sedang berada di dalam direktori Gaia
@@ -77,7 +77,7 @@ EOL
         fiber-post-ip --netuid 57 --external_ip "$IP" --external_port 8089 --subtensor.network finney --wallet.name default --wallet.hotkey default
         pm2 start --name subnet57 --instances 1 python -- gaia/miner/miner.py --port 9032
         ;;
-    4)
+    432)
         echo "IP server Anda adalah: $IP"
         ;;
     *)
