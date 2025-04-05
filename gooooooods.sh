@@ -1,12 +1,4 @@
 #!/bin/bash
-wget https://raw.githubusercontent.com/rennzone/Auto-Install-Bittensor-Script/refs/heads/main/bittensor-cli.sh && bash bittensor-cli.sh
-
-git clone https://github.com/rayonlabs/G.O.D.git
-cd G.O.D
-sudo -E ./bootstrap.sh
-source $HOME/.bashrc
-source $HOME/.venv/bin/activate
-task install
 
 rm -f G.O.D/core/config/base_diffusion.toml
 
