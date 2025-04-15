@@ -1,70 +1,5 @@
 #!/bin/bash
 
-rm -f G.O.D/core/config/base_diffusion.toml
-
-cat > G.O.D/core/config/base_diffusion.toml <<EOL
-async_upload = true
-bucket_no_upscale = true
-bucket_reso_steps = 32
-cache_latents = true
-cache_latents_to_disk = true
-caption_extension = ".txt"
-clip_skip = 1
-dynamo_backend = "no"
-enable_bucket = true
-epoch = 8
-gradient_accumulation_steps = 1
-gradient_checkpointing = true
-huber_c = 0.1
-huber_schedule = "snr"
-huggingface_path_in_repo = "checkpoint"
-huggingface_repo_id = ""
-huggingface_repo_type = "model"
-huggingface_repo_visibility = "public"
-huggingface_token = ""
-learning_rate = 0.00004
-loss_type = "l2"
-lr_scheduler = "constant"
-lr_scheduler_args = []
-lr_scheduler_num_cycles = 1
-lr_scheduler_power = 1
-max_bucket_reso = 2048
-max_data_loader_n_workers = 0
-max_grad_norm = 1
-max_timestep = 1000
-max_token_length = 75
-max_train_steps = 1600
-min_bucket_reso = 256
-min_snr_gamma = 5
-mixed_precision = "bf16"
-network_alpha = 16
-network_args = []
-network_dim = 32
-network_module = "networks.lora"
-no_half_vae = true
-noise_offset_type = "Original"
-optimizer_args = []
-optimizer_type = "AdamW8Bit"
-output_dir = "/app/outputs"
-output_name = "last"
-pretrained_model_name_or_path = "stabilityai/stable-diffusion-xl-base-1.0"
-prior_loss_weight = 1
-resolution = "1024,1024"
-sample_prompts = ""
-sample_sampler = "euler_a"
-save_every_n_epochs = 2
-save_model_as = "safetensors"
-save_precision = "bf16"
-scale_weight_norms = 5
-text_encoder_lr = 0.00004
-train_batch_size = 2
-train_data_dir = ""
-training_comment = ""
-unet_lr = 0.00004
-xformers = true
-EOL
-
-rm -f G.O.D/miner/endpoints/tuning.py
 
 cat > G.O.D/miner/endpoints/tuning.py <<EOL
 import os
@@ -254,7 +189,7 @@ async def task_offer_image(
         if current_job_finish_time is None or current_time + timedelta(hours=1) > current_job_finish_time:
             if request.hours_to_complete < 3:
                 logger.info("Accepting the image offer")
-                return MinerTaskResponse(message="Look at me", accepted=True)
+                return MinerTaskResponse(message="...", accepted=True)
             else:
                 logger.info("Rejecting offer - too long")
                 return MinerTaskResponse(message="I only accept small jobs", accepted=False)
