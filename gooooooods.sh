@@ -1,8 +1,8 @@
 #!/bin/bash
  
-rm -f G.O.D/core/config/base_diffusion_sdxl.toml.toml
+rm -f G.O.D/core/config/base_diffusion_sdxl.toml
 
-cat > G.O.D/core/config/base_diffusion_sdxl.toml.toml <<EOL
+cat > G.O.D/core/config/base_diffusion_sdxl.toml <<EOL
 async_upload = true
 bucket_no_upscale = true
 bucket_reso_steps = 32
